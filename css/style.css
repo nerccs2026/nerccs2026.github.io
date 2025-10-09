@@ -346,7 +346,7 @@ button:focus,
  *-------------------*/
 
 .jumbotron {
-    background            : linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/ES-building.jpg");
+    background            : linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/nerccs2026UR.jpg");
     background-size       : cover;
     padding               : 0;
     margin                : 0;
@@ -753,3 +753,4 @@ button:focus,
     text-align : center;
     top        : 65%;
     }
+
