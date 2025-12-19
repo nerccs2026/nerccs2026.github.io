@@ -90,6 +90,8 @@ h6 {
     line-height : 24px;
     }
 
+		
+
 /* --------------------------------------
  * LINK STYLE
  *------------------------------------------*/
@@ -195,6 +197,14 @@ button:focus,
 .white-bg {
     background-color : #ffffff;
     }
+
+.rounded-box {
+    border: 1px solid #ccc;     /* or none if you want a “card” look */
+    border-radius: 12px;        /* controls how rounded the corners are */
+    padding: 1rem;              /* prevents text from touching the edges */
+    background: #f9f9f9;        /* optional */
+}
+
 
 /* --------------------
  *  main Wrapper
@@ -753,4 +763,5 @@ button:focus,
     text-align : center;
     top        : 65%;
     }
+
 
