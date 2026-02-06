@@ -1,0 +1,343 @@
+% ============================================================
+% NERCCS 2026 Program Template (LaTeX)
+% Single-file, robust, easy to edit last-minute.
+% ============================================================
+
+\documentclass[11pt]{article}
+\usepackage{kpfonts}
+
+% ---------- Page + typography ----------
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{lineno}
+% ---------- Links (optional but useful) ----------
+\usepackage[hidelinks]{hyperref}
+
+% ---------- Lists / spacing ----------
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*, itemsep=0.35em, topsep=0.35em}
+
+% ---------- Tables (for overview grids, optional) ----------
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% ---------- Headers / footers ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{NERCCS 2026}
+\rhead{Program}
+\cfoot{\thepage}
+
+% ---------- Section formatting ----------
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries}{}{0pt}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{}{0pt}{}
+
+% ---------- Convenience macros ----------
+\newcommand{\NERCCS}{Northeast Regional Conference on Complex Systems (NERCCS 2026)}
+
+% Conference header block
+\newcommand{\ProgramHeader}[4]{%
+	\begin{center}
+		{\LARGE\bfseries #1\par}
+		\vspace{0.35em}
+		{\large #2\par}
+		\vspace{0.15em}
+		{\normalsize #3\par}
+		\vspace{0.15em}
+		{\normalsize\itshape #4\par}
+	\end{center}
+	\vspace{0.75em}
+}
+
+% A “time block” heading (e.g., Block 1)
+\newcommand{\TimeBlock}[3]{%
+	\section*{#1\hfill #2}
+	\noindent\textit{#3}\par\vspace{0.4em}
+	\hrule\vspace{0.8em}
+}
+
+% A parallel session (room track)
+% Arguments: Room label, Session title, Chair (optional; leave blank if unknown)
+\newcommand{\Session}[3]{%
+	\subsection*{#1: #2}
+	\if\relax\detokenize{#3}\relax\else
+	\noindent Session Chair: #3\par
+	\fi
+	\vspace{0.3em}
+}
+
+% A talk line
+% Arguments: Start time, Title, Author(s), Affiliation (optional), Notes (optional)
+\newcommand{\Talk}[5]{%
+	\item[\textbf{#1}] \textbf{#2}\\
+	#3%
+	\if\relax\detokenize{#4}\relax\else\ (\,#4\,)\fi%
+	\if\relax\detokenize{#5}\relax\else\\{\small\itshape #5}\fi%
+}
+
+% For breaks / lunches
+\newcommand{\BreakItem}[2]{%
+	\noindent\textbf{#1}\hfill #2\par
+}
+
+% Optional: a compact overview grid for one page
+% Use for attendee-scannable schedule summary.
+\newcommand{\OverviewGrid}{%
+	\section*{At-a-Glance Schedule (Overview)}
+	\begin{tabularx}{\textwidth}{>{\bfseries}p{2.7cm} Y Y}
+		\hline
+		Time & Room A & Room B \\
+		\hline
+		09:00--10:00 & Block 1 (Session A) & Block 1 (Session B) \\
+		10:15--11:15 & Block 2 (Session A) & Block 2 (Session B) \\
+		11:30--12:30 & Block 3 (Session A) & Block 3 (Session B) \\
+		14:00--15:00 & Block 4 (Session A) & Block 4 (Session B) \\
+		15:15--16:15 & Block 5 (Session A) & Block 5 (Session B) \\
+		16:30--17:30 & Block 6 (Session A) & Block 6 (Session B) \\
+		\hline
+	\end{tabularx}
+	\vspace{1.0em}
+}
+
+% ---------- Document ----------
+\begin{document}
+
+%\linenumbers
+	% EDIT THIS HEADER
+	\ProgramHeader
+	{\NERCCS}
+	{Program Booklet}
+	{Location: \textit{University of Rochester, Rochester, NY, Venue TBD}\quad 
+	$\cdot$\quad Dates: 
+	\textit{March 11--13, 2026}}
+	
+	
+	\begin{center}
+		
+	\textbf{\LARGE \textcolor{red}{DRAFT 2-3-26}}
+	
+	\end{center}
+		
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{nerccs2026logoProgram}
+
+\end{figure}
+	% Optional overview grid (comment out if not needed)
+	% \OverviewGrid
+	
+	% ---------- Example: Day 1 Structure ----------
+	\section*{Day 1 (March 11, 2026)}
+	
+	
+	\BreakItem{Registration}{12:00 - 4:00}
+	
+	% ===== Block 1 =====
+	\TimeBlock{Opening Remarks}{1:00 - 1:30}{}
+	\TimeBlock{Keynote}{1:30-2:30}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{}{The Physics and Chemistry of Synthesizing Abiotic Life in a Test Tube}{Juan Perez-Mercader}{Harvard University}{}
+	\end{itemize}
+	
+	\BreakItem{Break}{2:30 - 2:45}
+	
+
+
+	
+	
+	\TimeBlock{Parallel Sessions 1}{2:45 - 3:45}{}
+	\Session{Room A}{Network Control, Measurement, and Bias}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{2:45}{Distributed Self-Control of Dynamical Networks by Adaptive Link 
+		Weight Adjustments}{Hiroki Sayama}{Binghamton University, SUNY}{}
+		\Talk{3:05}{Estimating Uncertainty in Network Measures and Structures 
+		Arising from Noisy Data}{James Hartz}{University at Buffalo, SUNY}{}
+		\Talk{3:25}{A Diagnostic Framework for Sampling-Induced Distortion in 
+		Network Metrics}{Sriniwas Pandey}{Binghamton University, SUNY}{}		
+	\end{itemize}
+	
+	\Session{Room B}{Adaptive Social Networks and Belief Dynamics}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{2:45}{Information-mediated homophily in adaptive networks}{Joshua 
+		Rosen}{Northeastern University}{}
+		\Talk{3:05}{Bridging Simple and Complex Contagions in Belief Dynamics: A 
+		Voter Model Extension}{Jo{\~a}o Franco}{Vermont Complex Systems Center, 
+		University of Vermont}{}
+		\Talk{3:25}{Identifying brain network features that drive opinion formation 
+		and changes in humans}{Brian L. Clary}{Penn State University}{}
+	\end{itemize}
+		
+	\BreakItem{Break}{3:45 - 4:00}
+	
+	% ===== Block 2 =====
+	\TimeBlock{Parallel Sessions 2}{4:00 - 5:00}{}
+
+	
+	\Session{Room A}{Information, Entropy, and Behavioral Signals}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{4:00}{On the Uniqueness of the Coupled Entropy and its 
+		Applications}{Kenric P Nelson}{Photrek, Inc}{}
+		\Talk{4:20}{A Network Perspective of the Stock Market Using Mutual 
+		Information and Transfer Entropy}{Shangyi Bi}{Binghamton University, SUNY}{}
+		\Talk{4:40}{Detecting Dynamic ``Fingerprints'' in Human Random 
+		Keystrokes}{Jacqueline Blake}{Binghamton University, SUNY}{}
+	\end{itemize}
+	
+	\Session{Room B}{Media, Platforms, and Field Mapping}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{4:00}{How News Connects:  Mapping the Semantic Topology of a Digital 
+		Newspaper}{Sofia Sciangula}{Carlo Cattaneo University LIUC}{}
+		\Talk{4:20}{Tempo-Dependent Emergence in Platform-Mediated Collective 
+		Behavior}{Shaunette T. Ferguson}{Barnard College, Columbia University}{}
+		\Talk{4:40}{Interactive Visualization of the Updated Complex Systems Keyword 
+		Diagram}{Hiroki Sayama}{Binghamton University, SUNY}{}
+	\end{itemize}
+	
+	\section*{\LARGE Day 2 (March 12)}
+	
+	% ===== Block 3 =====
+	
+	\TimeBlock{Keynote}{9:15-10:15}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{}{Title TBA}{Filippo Radicchi}{Indiana University}{}
+	\end{itemize}
+	
+		\BreakItem{Break}{10:15 - 10:30}
+	\TimeBlock{Parallel Sessions 3}{10:30 - 11:30}{}
+	
+	\Session{Room A}{Social / Institutional Simulation and Innovation Dynamics}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{10:30}{A Simulation Model for Historical Evolution of Geopolitical 
+		Entities}{Andrea Agosta}{Carlo Cattaneo University LIUC}{}
+		\Talk{10:50}{Using Agent Based Modeling to explore long-term economic 
+		impacts 
+		of nurse turnover in healthcare}{Kate J. O'Neill}{Binghamton 
+		University, SUNY}{}
+		\Talk{11:10}{Uncovering simultaneous breakthroughs with a robust measure of 
+		disruptiveness}{Sadamori Kojaku}{Binghamton University, SUNY}{}
+	\end{itemize}
+	
+	\Session{Room B}{Infrastructure, Risk, and Public/Health Networks}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{10:30}{Graph-Based Analysis of Hurricane Stakeholder and Warning 
+		Networks: Structural Roles, Information Flow, and Optimization 
+		Diagnostics}{Hayford Adjavor}{Binghamton University, SUNY}{}
+		\Talk{10:50}{Inaccessibility in Public Transit Networks}{Katherine Betz}{University at Buffalo, SUNY}{}
+		\Talk{11:10}{Network-Driven Cohort Selection and Adverse Drug Reaction 
+		Detection in Epilepsy Social Media}{Ziqi Guo}{Binghamton University, SUNY}{}
+	\end{itemize}
+	
+	\TimeBlock{Lunch Break}{11:30 - 1:30}{Lunch on your own, see website for closeby options}
+	
+	\TimeBlock{Parallel Sessions 4}{1:30 - 2:30}{}
+	
+	\Session{Room A}{Graph Methods and Applied Dynamics}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{1:30}{distanceclosure: A Python Package for Network Sparsification 
+		Based on Their Topology}{Robert Palermo}{Binghamton University, SUNY}{}
+		\Talk{1:50}{The Effective Graph improves prediction of network dynamics in 
+		biochemical models}{Xuan Wang}{Binghamton University, SUNY \& Indiana University}{}
+		\Talk{2:10}{Robust Video Anomaly Detection under Partial Observation via 
+		Patch-Motion Graph Smoothing}{Neda Amirirad}{Binghamton University, SUNY}{}
+	\end{itemize}
+	
+	\Session{Room B}{Computational Models and Algorithm Diagnostics}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{1:30}{Diagnostic Evaluation of Conditional Generative Algorithms on 
+		Curated Single Cell Reference Data}{Matthew Jehrio}{University of Rochester}{}
+		\Talk{1:50}{Spark: Modular Spiking Neural Networks}{Mario Franco}{Binghamton University, SUNY}{}
+		\Talk{2:10}{Scalability of Structure-Preserving Simulations in Plasma 
+		Physics}{Sarthak Sharma}{University at Buffalo, SUNY}{}
+	\end{itemize}
+	
+	\BreakItem{Break}{2:30 - 2:45}
+	\TimeBlock{Keynote}{2:45 - 3:45}{}
+		\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{}{Title TBA}{Adilson Motter}{Northwestern University}{}
+	\end{itemize}
+	\BreakItem{Break}{3:45 - 4:00}
+	
+	
+	\TimeBlock{Parallel Sessions 5}{4:00 - 5:00}{}
+	
+	\Session{Room A}{Self-Organization, Robustness, and Epidemic Coupling}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{4:00}{A Feedback-Driven Lyapunov Principle for Self-Organization in 
+		Open Stochastic Systems}{Georgi Yordanov Georgiev}{Assumption University \& Worcester Polytechnic Institute}{}
+		\Talk{4:20}{Canalization drives Robustness in the Evolution of Collective 
+		Intelligence under Noise}{Srikanth Iyer}{Binghamton University, SUNY}{}
+		\Talk{4:40}{A symbiotic SIR process}{Gerardo Palafox-Castillo}{Universidad Autonoma de Nuevo Leon}{}
+	\end{itemize}
+	
+	\Session{Room B}{Collapse, Inequality, and Sustainability Dynamics}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{4:00}{A Meta-Model of Endogenous Overcrowding-Driven Demographic 
+		Collapse}{Federico Carucci}{Carlo Cattaneo University LIUC}{}
+		\Talk{4:20}{Parasites become rich and drive inequality in approach to 
+		collapse in a model of evolving networks}{Atiyab Zafar}{University of Delhi}{}
+		\Talk{4:40}{Artificial Agents and Ecological Collapse: an LLM-enhanced 
+		Agent-Based Model of a Sustainability Game}{Francesco Bertolotti}{Carlo Cattaneo University LIUC	}{}
+	\end{itemize}
+	
+	\section*{\LARGE Day 3 (March 13)}
+	
+	\TimeBlock{Keynote}{9:15 - 10:15}{}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{}{Title TBA}{Krishnan Padmanabhan }{University of Rochester}{}
+	\end{itemize}
+	
+	\TimeBlock{Parallel Sessions 6}{10:30 - 11:30}{}
+	
+	\Session{Room A}{LLM Learning, Optimization, and Alignment}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{10:30}{Prospect Learning in Large Language Models: Quantifying Risk 
+		Preferences and Adaptation Dynamics}{Nency Dhameja}{Binghamton 
+		University, SUNY}{}
+		\Talk{10:50}{Evolutionary System-Prompt Optimization for LLM Agents in 
+		Competitive Market Simulations}{Ossama Zaroual}{Carlo Cattaneo University LIUC}{}
+		\Talk{11:10}{Cooperation or Defection? The Decay of Alignment Instructions in 
+		Complex LLM Systems}{Andrea Monoli}{Carlo Cattaneo University LIUC}{}
+	\end{itemize}
+	
+	\Session{Room B}{LLM Agents in Social Systems (80 min session)}{TBD}
+	\begin{itemize}[label={}, leftmargin=0pt]
+		\Talk{10:30}{Large Language Model Agents Partially Reproduce Real-World 
+		Segregation Patterns in the Schelling Model}{Adreas Duus Pape}{Binghamton 
+		University, SUNY}{}
+		\Talk{10:50}{Going for the Third: Cooperation between LLM Agents in a 
+		Three-Option Setting}{Leonardo Mascagni}{Carlo Cattaneo University LIUC}{}
+		\Talk{11:10}{An Extension of the Sugarscape Model with LLM-based 
+		Agents}{Luca Moroni}{Carlo Cattaneo University LIUC}{}
+		\Talk{11:30}{Why We Experience Society Differently: Intrinsic Dispositions as 
+		Drivers of Ideological Complexity in Adaptive Social Networks}{Akshay Gangadhar}{Binghamton University}{}
+	\end{itemize}
+	
+	
+		\TimeBlock{NERCCS Business Meeting}{11:50 - 12:30}{}
+
+%	\OverviewGrid
+	
+	% ---------- End matter ----------
+%	\vfill
+%	\hrule
+%	\vspace{0.5em}
+%	{\small
+%		\noindent\textbf{Notes for organizers:} This template is intentionally 
+%		conservative (article class, simple macros) so it survives late edits.
+%		Populate sessions with talk titles/authors; optionally add chairs and 
+%		affiliations. If you want automated generation from CSV, keep the
+%		\texttt{\textbackslash Talk} lines consistent and generate them 
+%		programmatically.
+%	}
+	
+\end{document}
