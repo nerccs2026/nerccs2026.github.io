@@ -16,3 +16,14 @@
 *.ind
 *.lof
 *.lot
+logistics/logistics-inperson.tex
+.claude/settings.local.json
+.obsidian/workspace.json
+masterlist/nerccs2026_master_list (1).xlsx
+masterlist/nerccs2026_master_list_updated.xlsx
+masterlist/Northeast_Regional_Conference_on_Complex_Systems_2026_Attendees_2986802682800_20260227_005116_071.xlsx
+masterlist/read_eventbrite.ps1
+masterlist/read_master.ps1
+masterlist/read_master2.ps1
+masterlist/update_master.ps1
+.obsidian/workspace.json
