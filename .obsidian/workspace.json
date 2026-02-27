@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CLAUDE.md",
+                "file": "logistics/speaker-tech-requirements.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "speaker-tech-requirements"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "3130d40096083c70",
   "lastOpenFiles": [
+    "CLAUDE.md",
     "masterlist/{BE2F7FF2-AB5D-4344-8C07-E9129B1914DB}.tmp",
     "masterlist/~$nerccs2026_master_list_updated.tmp",
     "masterlist/nerccs2026_master_list_updated.xlsx",
@@ -194,7 +195,6 @@
     "masterlist/update_master.ps1",
     "masterlist/update_master.ps1.tmp.50508.1772158709332",
     "masterlist/read_eventbrite.ps1",
-    "masterlist/read_master2.ps1",
-    "masterlist/read_master2.ps1.tmp.50508.1772158586632"
+    "masterlist/read_master2.ps1"
   ]
 }
