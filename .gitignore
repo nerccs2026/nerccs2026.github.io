@@ -16,7 +16,6 @@
 *.ind
 *.lof
 *.lot
-logistics/logistics-inperson.tex
 .claude/settings.local.json
 .obsidian/workspace.json
 masterlist/nerccs2026_master_list (1).xlsx
