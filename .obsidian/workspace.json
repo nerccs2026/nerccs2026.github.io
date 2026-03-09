@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "speaker-tech-requirements"
             }
+          },
+          {
+            "id": "8674a31c7aca4385",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.12.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,7 +196,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "3130d40096083c70",
+  "active": "8674a31c7aca4385",
   "lastOpenFiles": [
     "CLAUDE.md",
     "masterlist/{BE2F7FF2-AB5D-4344-8C07-E9129B1914DB}.tmp",
