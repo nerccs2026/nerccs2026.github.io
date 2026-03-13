@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NERCCS Presenter Badge</title>
+
+<style>
+
+body{
+    font-family:system-ui, Arial;
+    background:#f4f4f4;
+    text-align:center;
+    padding:40px;
+}
+
+canvas{
+    border:1px solid #ccc;
+    cursor:grab;
+    margin-top:20px;
+}
+
+.controls{
+    margin-top:20px;
+}
+
+button{
+    padding:10px 18px;
+    font-size:16px;
+    margin:6px;
+    cursor:pointer;
+}
+
+input[type=range]{
+    width:220px;
+}
+
+.share{
+    margin-top:25px;
+}
+
+a.share-btn{
+    display:inline-block;
+    margin:6px;
+    padding:10px 14px;
+    background:#333;
+    color:white;
+    text-decoration:none;
+    border-radius:4px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>NERCCS Presenter Badge Generator</h2>
+<p>Upload your photo, drag to position, zoom if needed, then download.</p>
+
+<input type="file" id="upload" accept="image/*">
+
+<div class="controls">
+Zoom:
+<input type="range" id="zoom" min="0.5" max="3" step="0.01" value="1">
+</div>
+
+<canvas id="canvas" width="1080" height="1080"></canvas>
+
+<div class="controls">
+<button id="download">Download Image</button>
+</div>
+
+<div class="share">
+<a class="share-btn" id="linkedin" target="_blank">Share on LinkedIn</a>
+<a class="share-btn" id="twitter" target="_blank">Share on X / Twitter</a>
+</div>
+
+<script>
+
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
+
+const upload = document.getElementById("upload")
+const zoomSlider = document.getElementById("zoom")
+
+let userImage = new Image()
+let frame = new Image()
+
+frame.src = "frame.png"
+
+let zoom = 1
+
+let posX = 0
+let posY = 0
+
+let dragging = false
+let lastX = 0
+let lastY = 0
+
+function draw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+
+    if(userImage.src){
+
+        const w = userImage.width * zoom
+        const h = userImage.height * zoom
+
+        ctx.save()
+
+        const radius = 420
+        const centerX = canvas.width/2
+        const centerY = canvas.height/2
+
+        ctx.beginPath()
+        ctx.arc(centerX,centerY,radius,0,Math.PI*2)
+        ctx.closePath()
+        ctx.clip()
+
+        ctx.drawImage(
+            userImage,
+            centerX - w/2 + posX,
+            centerY - h/2 + posY,
+            w,
+            h
+        )
+
+        ctx.restore()
+    }
+
+    if(frame.complete){
+        ctx.drawImage(frame,0,0,canvas.width,canvas.height)
+    }
+}
+
+upload.addEventListener("change",function(){
+
+    const file = this.files[0]
+    if(!file) return
+
+    const reader = new FileReader()
+
+    reader.onload = function(e){
+
+        userImage.onload = function(){
+
+            zoom = canvas.width / userImage.width
+            zoomSlider.value = zoom
+
+            posX = 0
+            posY = 0
+
+            draw()
+        }
+
+        userImage.src = e.target.result
+    }
+
+    reader.readAsDataURL(file)
+})
+
+zoomSlider.addEventListener("input",function(){
+
+    zoom = parseFloat(this.value)
+    draw()
+
+})
+
+canvas.addEventListener("mousedown",(e)=>{
+
+    dragging = true
+    lastX = e.offsetX
+    lastY = e.offsetY
+    canvas.style.cursor = "grabbing"
+
+})
+
+canvas.addEventListener("mouseup",()=>{
+
+    dragging = false
+    canvas.style.cursor = "grab"
+
+})
+
+canvas.addEventListener("mouseleave",()=>{
+
+    dragging = false
+    canvas.style.cursor = "grab"
+
+})
+
+canvas.addEventListener("mousemove",(e)=>{
+
+    if(!dragging) return
+
+    const dx = e.offsetX - lastX
+    const dy = e.offsetY - lastY
+
+    posX += dx
+    posY += dy
+
+    lastX = e.offsetX
+    lastY = e.offsetY
+
+    draw()
+
+})
+
+document.getElementById("download").addEventListener("click",function(){
+
+    const link = document.createElement("a")
+
+    link.download = "nerccs-presenter.png"
+    link.href = canvas.toDataURL("image/png")
+
+    link.click()
+
+})
+
+frame.onload = draw
+
+const text = encodeURIComponent(
+"I presented at NERCCS 2026 — Northeast Regional Conference on Complex Systems"
+)
+
+document.getElementById("linkedin").href =
+"https://www.linkedin.com/sharing/share-offsite/?url=https://nerccs2026.github.io&summary="+text
+
+document.getElementById("twitter").href =
+"https://twitter.com/intent/tweet?text="+text
+
+</script>
+
+</body>
+</html>
